@@ -17,17 +17,16 @@ import {
 } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js';
 
 // Your Firebase config
-
-
 const firebaseConfig = {
-    apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,
-    authDomain: process.env.NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN,
-    projectId: process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID,
-    storageBucket: process.env.NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET,
-    messagingSenderId: process.env.NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID,
-    appId: process.env.NEXT_PUBLIC_FIREBASE_APP_ID,
+  apiKey: "AIzaSyAkF_ZJQyzR1C8ZE0YIicm_hRYHjBWVthk",
+  authDomain: "roomateapp-7603f.firebaseapp.com",
+  projectId: "roomateapp-7603f",
+  storageBucket: "roomateapp-7603f.firebasestorage.app",
+  messagingSenderId: "534745322381",
+  appId: "1:534745322381:web:5425d66a5c26ba534c63c4",
+  measurementId: "G-76V7T7TVWM"
+};
 
-}
 
 
 
