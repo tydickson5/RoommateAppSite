@@ -13,23 +13,72 @@
         
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(0deg, hwb(125 13% 78%) 0%, #476249 100%);
             min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            
             padding: 20px;
         }
         
         .container {
             max-width: 600px;
-            background: white;
-            border-radius: 24px;
-            padding: 60px 40px;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            margin: 0 auto;
+            padding-top: 60px;
             text-align: center;
         }
+
+        input, textarea {
+            width: 100%;
+            max-width: 420px;
+            padding: 16px;
+            border-radius: 14px;
+            border: 1.5px solid rgba(255,255,255,0.2);
+            background: rgba(255,255,255,0.08);
+            color: white;
+            font-size: 16px;
+            backdrop-filter: blur(10px);
+            outline: none;
+            transition: all 0.25s ease;
+        }
+
+        input::placeholder,
+        textarea::placeholder {
+            color: rgba(255,255,255,0.6);
+        }
+
+        input:focus,
+        textarea:focus {
+            border-color: #ffffff;
+            background: rgba(255,255,255,0.12);
+            box-shadow: 0 0 0 3px rgba(255,255,255,0.15);
+        }
+
+        .check-btn {
+            width: 100%;
+            max-width: 420px;
+            padding: 16px;
+            border-radius: 14px;
+            border: 1.5px solid rgba(255,255,255,0.2);
+            background: #7FDD95;
+            color: rgb(0, 0, 0);
+            font-size: 16px;
+            backdrop-filter: blur(10px);
+            outline: none;
+            transition: all 0.25s ease;
+        }
+
+        textarea {
+            margin-top: 20px;
+            resize: none;
+        }
         
+        .email-form {
+            margin-top: 24px;
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+            align-items: center;
+        }
+
         .logo {
             font-size: 48px;
             margin-bottom: 16px;
@@ -129,6 +178,75 @@
             display: none;
             margin-top: 20px;
         }
+
+        .apple-btn {
+            width: 100%;
+            max-width: 400px;
+            padding: 16px 24px;
+            background: #000;
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            margin: 16px auto 0;
+            transition: all 0.3s;
+        }
+
+        .apple-btn:hover {
+            background: #1a1a1a;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+        }
+
+        .apple-icon {
+            width: 20px;
+            height: 20px;
+            fill: white;
+        }
+
+        .beta-toggle {
+            margin-top: 20px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            cursor: pointer;
+            justify-content: center;
+            color: white;
+            font-size: 15px;
+        }
+
+        .checkbox {
+            width: 22px;
+            height: 22px;
+            border-radius: 6px;
+            border: 2px solid rgba(255,255,255,0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s;
+        }
+
+        .checkmark {
+            opacity: 0;
+            transform: scale(0.5);
+            transition: all 0.2s;
+        }
+
+        /* active state */
+        .beta-toggle.active .checkbox {
+            background: #10b981;
+            border-color: #10b981;
+        }
+
+        .beta-toggle.active .checkmark {
+            opacity: 1;
+            transform: scale(1);
+        }
         
         @media (max-width: 600px) {
             .container {
@@ -142,11 +260,39 @@
     </style>
 </head>
 <body>
-    <div class="logo">🏠</div>
-        <h1>Roommate App</h1>
+    <div class="container">
+        <h1>Chef 'n Share</h1>
         <p>The easiest way to manage shared household items with your roommates. Track what you have, what you need, and who's getting what.</p>
         
         <div id="signInSection">
+
+            <!-- Suggestions -->
+            <textarea rows="4" cols="100" id="suggestions" placeholder="Any feature ideas?"></textarea>
+
+            <!-- Beta toggle -->
+            <div class="beta-toggle" id="toggleBetaTest">
+                <div class="checkbox">
+                    <span class="checkmark">✓</span>
+                </div>
+                <p>Join Beta Testing</p>
+            </div>
+
+            
+
+            <!-- ✉️ EMAIL SIGNUP -->
+            <div class="email-form">
+                <input type="email" id="email" placeholder="Enter your email" />
+                <input type="password" id="password" placeholder="Create a password" />
+                
+                <button class="check-btn" id="emailSignUpBtn">
+                    <span class="check-text">Join with Email</span>
+                    <span class="check-icon">✓</span>
+                </button>
+            </div>
+            <br/><br/>
+            <p>Or</p>
+
+            <!-- Google -->
             <button class="google-btn" id="googleSignInBtn">
                 <svg class="google-icon" viewBox="0 0 24 24">
                     <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
@@ -157,7 +303,11 @@
                 Join Waitlist with Google
             </button>
             
+            <!-- Apple -->
             <button class="apple-btn" id="appleSignInBtn">
+                <svg class="apple-icon" viewBox="0 0 24 24">
+                    <path d="M16.365 1.43c0 1.14-.41 2.24-1.08 3.06-.73.89-1.92 1.57-3.03 1.48-.14-1.1.43-2.28 1.11-3.07.75-.86 2.02-1.52 3-1.47zM21.49 17.11c-.58 1.3-.86 1.88-1.6 3.05-1.03 1.65-2.48 3.7-4.29 3.72-1.6.02-2.01-1.04-4.17-1.03-2.16.01-2.61 1.05-4.21 1.01-1.81-.03-3.19-1.86-4.22-3.5-2.87-4.58-3.17-9.96-1.4-12.66 1.26-1.94 3.24-3.07 5.09-3.07 1.89 0 3.08 1.05 4.64 1.05 1.52 0 2.44-1.05 4.63-1.05 1.64 0 3.38.89 4.64 2.44-4.08 2.23-3.42 8.05.89 9.99z"/>
+                </svg>
                 Join Waitlist with Apple
             </button>
             
@@ -165,15 +315,7 @@
                 <p>Signing in...</p>
             </div>
 
-            <textarea rows="4" cols="100">
-
-            </textarea>
-            <div>
-                <button>
-                    Yes
-                </button>
-                <p>Join Beta Testing</p>
-            </div>
+            
             
         </div>
         
@@ -187,6 +329,7 @@
             <h3 id="userName"></h3>
             <p id="userEmail"></p>
         </div>
+    </div>
 
     <script type="module" src="main.js"></script>
 </body>

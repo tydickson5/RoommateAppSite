@@ -3,20 +3,18 @@ import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.7.1/firebas
 import { 
     getAuth, 
     GoogleAuthProvider, 
-    signInWithPopup 
+    OAuthProvider,
+    signInWithPopup,
+    createUserWithEmailAndPassword
 } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js';
 import { 
     getFirestore, 
-    collection, 
-    addDoc, 
     setDoc,
     doc,
-    query, 
-    onSnapshot,
     serverTimestamp 
 } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js';
 
-// Your Firebase config
+// Firebase config
 const firebaseConfig = {
   apiKey: "AIzaSyAkF_ZJQyzR1C8ZE0YIicm_hRYHjBWVthk",
   authDomain: "roomateapp-7603f.firebaseapp.com",
@@ -24,26 +22,34 @@ const firebaseConfig = {
   storageBucket: "roomateapp-7603f.firebasestorage.app",
   messagingSenderId: "534745322381",
   appId: "1:534745322381:web:5425d66a5c26ba534c63c4",
-  measurementId: "G-76V7T7TVWM"
 };
-
-
-
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const db = getFirestore(app);
+
 const provider = new GoogleAuthProvider();
 const appleProvider = new OAuthProvider('apple.com');
 
 // DOM elements
 const googleSignInBtn = document.getElementById('googleSignInBtn');
+const appleSignInBtn = document.getElementById('appleSignInBtn');
+const emailBtn = document.getElementById("emailSignUpBtn");
+
 const signInSection = document.getElementById('signInSection');
 const successMessage = document.getElementById('successMessage');
 const userInfo = document.getElementById('userInfo');
 const loading = document.getElementById('loading');
-const counterElement = document.getElementById('counter');
+
+let betaSelected = false;
+
+const betaToggle = document.getElementById("toggleBetaTest");
+
+betaToggle.addEventListener("click", () => {
+    betaSelected = !betaSelected;
+    betaToggle.classList.toggle("active");
+});
 
 // Google Sign In
 googleSignInBtn.addEventListener('click', async () => {
@@ -53,56 +59,89 @@ googleSignInBtn.addEventListener('click', async () => {
         
         const result = await signInWithPopup(auth, provider);
         const user = result.user;
-        
-        console.log('User signed in:', user);
-        
-        // Add to waitlist
-        await addToWaitlist(user);
-        
-        // Show success
-        signInSection.style.display = 'none';
-        successMessage.style.display = 'block';
-        userInfo.style.display = 'block';
-        
-        // Display user info
-        document.getElementById('userAvatar').src = user.photoURL || 'https://via.placeholder.com/60';
-        document.getElementById('userName').textContent = user.displayName || 'User';
-        document.getElementById('userEmail').textContent = user.email;
-        
+
+        await handleSuccess(user);
+
     } catch (error) {
-        console.error('Error signing in:', error);
-        alert('Error signing in. Please try again.');
+        console.error(error);
+        alert('Error signing in');
         loading.style.display = 'none';
         googleSignInBtn.disabled = false;
     }
 });
 
+// Apple Sign In
 appleSignInBtn.addEventListener('click', async () => {
-
     try {
         const result = await signInWithPopup(auth, appleProvider);
-        await addToWaitlist(result.user);
+        await handleSuccess(result.user);
     } catch (error) {
         console.error('Apple sign in error:', error);
+        alert('Apple sign-in failed');
     }
 });
 
 
-// Add user to waitlist
+// ✉️ EMAIL + PASSWORD SIGNUP
+emailBtn.addEventListener("click", async () => {
+    const email = document.getElementById("email").value;
+    const password = document.getElementById("password").value;
+
+    if (!email || !password) {
+        alert("Enter email and password");
+        return;
+    }
+
+    try {
+        const result = await createUserWithEmailAndPassword(auth, email, password);
+        const user = result.user;
+
+        // ✅ checkmark animation
+        emailBtn.classList.add("success");
+
+        await handleSuccess(user);
+
+    } catch (err) {
+        console.error(err);
+        alert(err.message);
+    }
+});
+
+
+// Shared success handler (DRY)
+async function handleSuccess(user) {
+    await addToWaitlist(user);
+
+    signInSection.style.display = 'none';
+    successMessage.style.display = 'block';
+    userInfo.style.display = 'block';
+
+    document.getElementById('userAvatar').src =
+        user.photoURL || 'https://via.placeholder.com/60';
+
+    document.getElementById('userName').textContent =
+        user.displayName || 'User';
+
+    document.getElementById('userEmail').textContent =
+        user.email;
+}
+
+
 async function addToWaitlist(user) {
     try {
-        // Add to waitlist collection with user ID as document ID
         await setDoc(doc(db, 'waitlist', user.uid), {
             uid: user.uid,
-            name: user.displayName,
+            name: user.displayName || null,
             email: user.email,
             joinedAt: serverTimestamp(),
-            status: 'pending'
+            status: 'pending',
+            suggestions: document.getElementById("suggestions")?.value || "",
+            beta: betaSelected
         });
-        
+
         console.log('Added to waitlist');
     } catch (error) {
-        console.error('Error adding to waitlist:', error);
+        console.error(error);
         throw error;
     }
 }
