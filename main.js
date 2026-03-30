@@ -114,16 +114,7 @@ async function handleSuccess(user) {
 
     signInSection.style.display = 'none';
     successMessage.style.display = 'block';
-    userInfo.style.display = 'block';
 
-    document.getElementById('userAvatar').src =
-        user.photoURL || 'https://via.placeholder.com/60';
-
-    document.getElementById('userName').textContent =
-        user.displayName || 'User';
-
-    document.getElementById('userEmail').textContent =
-        user.email;
 }
 
 

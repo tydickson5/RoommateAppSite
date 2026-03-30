@@ -128,7 +128,7 @@
         
         .success {
             display: none;
-            background: #10b981;
+            background: #7FDD95;
             color: white;
             padding: 20px;
             border-radius: 12px;
@@ -147,33 +147,7 @@
             background: #f9fafb;
             border-radius: 12px;
         }
-        
-        .user-avatar {
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            margin-bottom: 12px;
-        }
-        
-        .counter {
-            margin-top: 40px;
-            padding-top: 40px;
-            border-top: 2px solid #f0f0f0;
-        }
-        
-        .counter-number {
-            font-size: 48px;
-            font-weight: 700;
-            color: #667eea;
-        }
-        
-        .counter-label {
-            font-size: 14px;
-            color: #999;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-        
+
         .loading {
             display: none;
             margin-top: 20px;
@@ -211,13 +185,17 @@
 
         .beta-toggle {
             margin-top: 20px;
-            display: flex;
-            align-items: center;
+            display: inline-flex;       /* changed from flex -> inline-flex */
+            align-items: center;        /* vertically center the checkbox and text */
             gap: 12px;
             cursor: pointer;
-            justify-content: center;
             color: white;
             font-size: 15px;
+        }
+
+        .beta-toggle p {
+            margin: 0;                 /* remove default p margin */
+            line-height: 1;            /* align text vertically with checkbox */
         }
 
         .checkbox {
@@ -239,8 +217,8 @@
 
         /* active state */
         .beta-toggle.active .checkbox {
-            background: #10b981;
-            border-color: #10b981;
+            background: #7FDD95;
+            border-color: #7FDD95;
         }
 
         .beta-toggle.active .checkmark {
@@ -268,7 +246,7 @@
 
             <!-- Suggestions -->
             <textarea rows="4" cols="100" id="suggestions" placeholder="Any feature ideas?"></textarea>
-
+            <br/>
             <!-- Beta toggle -->
             <div class="beta-toggle" id="toggleBetaTest">
                 <div class="checkbox">
@@ -277,19 +255,17 @@
                 <p>Join Beta Testing</p>
             </div>
 
-            
-
             <!-- ✉️ EMAIL SIGNUP -->
             <div class="email-form">
                 <input type="email" id="email" placeholder="Enter your email" />
                 <input type="password" id="password" placeholder="Create a password" />
                 
                 <button class="check-btn" id="emailSignUpBtn">
-                    <span class="check-text">Join with Email</span>
+                    <span class="check-text"><b>Join with Email</b></span>
                     <span class="check-icon">✓</span>
                 </button>
             </div>
-            <br/><br/>
+            <br/>
             <p>Or</p>
 
             <!-- Google -->
