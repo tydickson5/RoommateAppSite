@@ -10,6 +10,12 @@
       ]
     }
   ],
+  "routes": [
+    {
+      "src": "^/\\.well-known/apple-app-site-association$",
+      "dest": "/.well-known/apple-app-site-association"
+    }
+  ],
   "rewrites": [
     { "source": "/join", "destination": "/join.html" }
   ]
