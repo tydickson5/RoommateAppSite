@@ -115,7 +115,7 @@ emailBtn.addEventListener("click", async () => {
 // Shared success handler (DRY)
 async function handleSuccess(user) {
     u = user
-    inforManager.style.display = "block"
+    infoManager.style.display = "block"
     signInSection.style.display = 'none';
     
 
