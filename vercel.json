@@ -11,6 +11,7 @@
     }
   ],
   "rewrites": [
-    { "source": "/join", "destination": "/join.html" }
+    { "source": "/join", "destination": "/join.html" },
+    {"source": "/.well-known/apple-app-site-association", "destination": "/.well-known/apple-app-site-association.json"}
   ]
 }
