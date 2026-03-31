@@ -46,6 +46,33 @@
             margin-bottom: 40px;
             line-height: 1.6;
         }
+
+        .step{
+            display: flex;
+
+        }
+        .step h3{
+            color: #7FDD95;
+        }
+        .step p{
+            margin-left: 10px;
+        }
+        #steps{
+            border: 1.5px solid rgba(255,255,255,0.2);
+            background: rgba(255,255,255,0.08);
+            padding: 16px;
+            border-radius: 14px;
+        }
+
+        a{
+            color: #7FDD95;
+            text-decoration: none;
+        }
+
+        span{
+            color: red;
+            font-size: 120%;
+        }
         
         
         @media (max-width: 600px) {
@@ -65,25 +92,34 @@
         <p>The easiest way to manage shared household items with your roommates. Track what you have, what you need, and who's getting what.</p>
         
         <h2>Thank you for your interest</h2><br/>
+        <h4><span>Note: </span>there are only <span>98</span> spots in this round of testing left</h3>
+        <br/>
+        <div id="steps">
+            <h3>Directions to download the app</h3><br/>
 
-        <h3>Directions to download the app</h3><br/>
+            <div class="step">
+                <h3>1</h3>
+                <p>Download the TestFlight - <a href="https://apps.apple.com/us/app/testflight/id899247664">Here</a></p>
+            </div>
 
-        <div class="step">
-            <h3>Step 1</h3>
-            <p>Download the TestFlight app from Apple - <a href="https://apps.apple.com/us/app/testflight/id899247664">Here</a>
-</p>
-        </div><br/>
+            <div class="step">
+                <h3>2</h3>
+                <p>Join the beta app - <a href="itms-beta://testflight.apple.com/join/t5Bpvd5P">Here</a></p>
+                
+            </div>
 
-        <div class="step">
-            <h3>Step 2</h3>
-            <p>Visit this link to accept the beta app - <a href="itms-beta://testflight.apple.com/join/t5Bpvd5P">Here</a></p>
-            
+            <div class="step">
+                <h3>3</h3>
+                <p>If you joined the waitlist then use that login, if not then create one</p>
+            </div>
+
+            <div class="step">
+                <h3>4</h3>
+                <p>If you were sent a link to join a group, click on that again</p>
+            </div>
         </div>
 
-         <div class="step">
-            <h3>Step 3</h3>
-            <p>If you joined the waitlist then use that login, if not then create one</p>
-        </div>
+        
         
     </div>
 
