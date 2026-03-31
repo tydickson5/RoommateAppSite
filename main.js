@@ -121,12 +121,11 @@ async function handleSuccess(user) {
 
 }
 
-async function handleInfo(){
+infoButton.addEventListener("click", async () => {
     await addToWaitlist(u);
     successMessage.style.display = 'block';
-    inforManager.style.display = "none"
-}
-
+    infoManager.style.display = "none"
+})
 
 async function addToWaitlist(user) {
     if(u == null){
