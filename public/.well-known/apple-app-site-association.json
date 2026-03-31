@@ -3,7 +3,7 @@
     "details": [
       {
         "appID": "NUC37C5ZL9.com.sukiroommateapp.RoommateApp",
-        "paths": [ "/join/*" ]
+        "paths": [ "/join", "/join/*"]
       }
     ]
   }
