@@ -226,6 +226,10 @@
             transform: scale(1);
         }
         
+        #infoManager {
+            display: none;
+        }
+
         @media (max-width: 600px) {
             .container {
                 padding: 40px 24px;
@@ -244,16 +248,7 @@
         
         <div id="signInSection">
 
-            <!-- Suggestions -->
-            <textarea rows="4" cols="100" id="suggestions" placeholder="Any feature ideas?"></textarea>
-            <br/>
-            <!-- Beta toggle -->
-            <div class="beta-toggle" id="toggleBetaTest">
-                <div class="checkbox">
-                    <span class="checkmark">✓</span>
-                </div>
-                <p>Join Beta Testing</p>
-            </div>
+            
 
             <!-- ✉️ EMAIL SIGNUP -->
             <div class="email-form">
@@ -293,6 +288,25 @@
 
             
             
+        </div>
+
+        <div class="info" id="infoManager">
+            <!-- Suggestions -->
+            <textarea rows="4" cols="100" id="suggestions" placeholder="Any feature ideas?"></textarea>
+            <br/>
+            <!-- Beta toggle -->
+            <div class="beta-toggle" id="toggleBetaTest">
+                <div class="checkbox">
+                    <span class="checkmark">✓</span>
+                </div>
+                <p>Join Beta Testing</p>
+            </div>
+
+            <button class="check-btn" id="infoButton" onclick="handleInfo()">
+                <span class="check-text"><b>Submit</b></span>
+                <span class="check-icon">✓</span>
+            </button>
+
         </div>
         
         <div class="success" id="successMessage">

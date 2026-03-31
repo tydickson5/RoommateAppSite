@@ -42,6 +42,8 @@ const successMessage = document.getElementById('successMessage');
 const userInfo = document.getElementById('userInfo');
 const loading = document.getElementById('loading');
 
+var u = null;
+
 let betaSelected = false;
 
 const betaToggle = document.getElementById("toggleBetaTest");
@@ -110,11 +112,17 @@ emailBtn.addEventListener("click", async () => {
 
 // Shared success handler (DRY)
 async function handleSuccess(user) {
-    await addToWaitlist(user);
-
+    u = user
+    inforManager.style.display = "block"
     signInSection.style.display = 'none';
-    successMessage.style.display = 'block';
+    
 
+}
+
+async function handleInfo(){
+    await addToWaitlist(u);
+    successMessage.style.display = 'block';
+    inforManager.style.display = "none"
 }
 
 
