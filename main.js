@@ -42,6 +42,8 @@ const successMessage = document.getElementById('successMessage');
 const userInfo = document.getElementById('userInfo');
 const loading = document.getElementById('loading');
 
+const inforManager = document.getElementById("infoButon")
+
 var u = null;
 
 let betaSelected = false;
@@ -127,6 +129,10 @@ async function handleInfo(){
 
 
 async function addToWaitlist(user) {
+    if(u == null){
+        alert("No user")
+        return
+    }
     try {
         await setDoc(doc(db, 'waitlist', user.uid), {
             uid: user.uid,
