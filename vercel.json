@@ -1,7 +1,7 @@
 {
   "headers": [
     {
-      "source": "/.well-known/apple-app-site-association.json",
+      "source": "/.well-known/apple-app-site-association",
       "headers": [
         {
           "key": "Content-Type",
@@ -10,10 +10,10 @@
       ]
     }
   ],
-  "rewrites": [
+  "routes": [
     {
-      "source": "/.well-known/apple-app-site-association",
-      "destination": "/.well-known/apple-app-site-association.json"
+      "src": "^/\\.well-known/apple-app-site-association$",
+      "dest": "/.well-known/apple-app-site-association"
     }
   ]
 }
