@@ -144,6 +144,10 @@ async function addToWaitlist(user) {
         });
 
         console.log('Added to waitlist');
+
+        if(betaSelected){
+            window.location.href = "https://www.chefnshare.com/join"
+        }
     } catch (error) {
         console.error(error);
         throw error;
