@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chef n Share - Learn the app</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', sans-serif;
+            background: linear-gradient(0deg, #213823 0%, #476249 100%);
+            
+            
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding-top: 60px;
+            text-align: center;
+        }
+
+        input, textarea {
+            width: 100%;
+            max-width: 420px;
+            padding: 16px;
+            border-radius: 14px;
+            border: 1.5px solid rgba(255,255,255,0.2);
+            background: rgba(255,255,255,0.08);
+            color: white;
+            font-size: 16px;
+            backdrop-filter: blur(10px);
+            outline: none;
+            transition: all 0.25s ease;
+        }
+
+        input::placeholder,
+        textarea::placeholder {
+            color: rgba(255,255,255,0.6);
+        }
+
+        input:focus,
+        textarea:focus {
+            border-color: #ffffff;
+            background: rgba(255,255,255,0.12);
+            box-shadow: 0 0 0 3px rgba(255,255,255,0.15);
+        }
+
+        .check-btn {
+            width: 100%;
+            max-width: 420px;
+            padding: 16px;
+            border-radius: 14px;
+            border: 1.5px solid rgba(255,255,255,0.2);
+            background: #7FDD95;
+            color: rgb(0, 0, 0);
+            font-size: 16px;
+            backdrop-filter: blur(10px);
+            outline: none;
+            transition: all 0.25s ease;
+        }
+
+        textarea {
+            margin-top: 20px;
+            resize: none;
+        }
+        
+    </style>
+</head>
+<body>
+    <div class="container">
+
+        <div class="tab-bar" style="gap: 40px; display: flex; justify-content: center;">
+        <a href="index.html" class="tab-link active">Home</a>
+        <a href="tutorial.html" class="tab-link">More</a>
+        </div>
+
+        <img src="logo_horizantal.png" alt="Chef n Share" style="width: 550px; margin-bottom: -60px;">
+
+        <div style="display: flex; flex-direction: column; gap: 10px; max-width: 320px; margin: 0 auto 40px;">
+            <p style="color: white; font-size: 17px;">Add items</p>
+            <p style="color: white; font-size: 17px;">Keep track of what you have</p>
+            <p style="color: white; font-size: 17px;">Leave notes to your group</p>
+        </div>
+
+        <img src="basic.png" alt="Tutorial image" style="width: 260px; border-radius: 16px; margin-bottom: 50px;">
+
+        <div style="display: flex; flex-direction: column; gap: 10px; max-width: 320px; margin: 0 auto 40px;">
+            <p style="color: white; font-size: 17px; font-weight: bold;">To change or create groups:</p>
+            <p style="color: white; font-size: 17px;">Select the 'Profile' tab</p>
+        </div>
+
+        <img src="Family.png" alt="Tutorial image" style="width: 260px; border-radius: 16px; margin-bottom: 50px;">
+
+        <div style="display: flex; flex-direction: column; gap: 10px; max-width: 320px; margin: 0 auto 40px;">
+            <p style="color: white; font-size: 17px;">Use the settings to</p>
+            <p style="color: white; font-size: 17px; font-weight: bold;">invite others to join your group</p>
+        </div>
+
+        <img src="Member.png" alt="Tutorial image" style="width: 260px; border-radius: 16px;">
+
+</body>
+</html>
