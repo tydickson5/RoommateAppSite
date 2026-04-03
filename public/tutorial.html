@@ -70,7 +70,19 @@
             margin-top: 20px;
             resize: none;
         }
-        
+
+        @media (max-width: 600px) {
+            .container {
+                padding: 40px 24px;
+            }
+            .logo{
+                margin-bottom: -20px;
+            }
+            
+            h1 {
+                font-size: 28px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -81,8 +93,7 @@
         <a href="tutorial.html" class="tab-link">More</a>
         </div>
 
-        <img src="logo_horizantal.png" alt="Chef n Share" style="width: 90vw; max-width: 550px; margin-bottom: -60px;">
-
+        <img src="logo_horizantal.png" alt="Chef n Share" class="logo" style="width: 90vw; max-width: 550px; margin-bottom: -60px;">
         <div style="display: flex; flex-direction: column; gap: 10px; max-width: 320px; margin: 0 auto 40px;">
             <p style="color: white; font-size: 17px;">Add items</p>
             <p style="color: white; font-size: 17px;">Keep track of what you have</p>
