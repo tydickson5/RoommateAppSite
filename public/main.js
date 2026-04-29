@@ -22,6 +22,7 @@ const firebaseConfig = {
   storageBucket: "roomateapp-7603f.firebasestorage.app",
   messagingSenderId: "534745322381",
   appId: "1:534745322381:web:5425d66a5c26ba534c63c4",
+  measurementId: "G-76V7T7TVWM"
 };
 
 // Initialize Firebase
